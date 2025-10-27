@@ -5,7 +5,8 @@
   },
   "runArgs": [
     "--name",
-    "claude-code-pro-devcontainer"
+    "claude-code-pro-devcontainer",
+    "--shm-size=1g" // For Chrome
   ],
   "workspaceFolder": "/workspaces/claude-code-pro",
   "customizations": {
@@ -42,8 +43,21 @@
     }
   },
   "forwardPorts": [
-    5433
+    5433, // PostgreSQL
+    5901, // VNC
+    6080 // Desktop
   ],
+  "portsAttributes": {
+    "5433": {
+      "label": "postgresql"
+    },
+    "5901": {
+      "label": "vnc"
+    },
+    "6080": {
+      "label": "desktop"
+    }
+  },
   /* GET FROM: https://containers.dev/features */
   "features": {
     /* https://github.com/devcontainers/features/tree/main/src/common-utils */
@@ -89,7 +103,13 @@
     /* https://github.com/devcontainers/features/tree/main/src/aws-cli */
     "ghcr.io/devcontainers/features/aws-cli:1": {
       "version": "latest"
-    }
+    },
+    /* https://github.com/devcontainers/features/tree/main/src/desktop-lite */
+    "ghcr.io/devcontainers/features/desktop-lite:1": {
+      "version": "latest"
+    },
+    /* https://github.com/schlich/devcontainer-features/tree/main/src/powerlevel10k */
+    "ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {}
   },
   "postCreateCommand": ".devcontainer/postCreateCommand.sh",
   "remoteUser": "root",

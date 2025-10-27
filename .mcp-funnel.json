@@ -1,5 +1,13 @@
 {
     "servers": {
+        "playwright": {
+            "command": "npx",
+            "args": [
+                "@playwright/mcp@latest",
+                "--browser",
+                "firefox"
+            ]
+        },
         "awslabs.aws-api-mcp-server": {
             "command": "uvx",
             "args": [

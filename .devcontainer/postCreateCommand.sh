@@ -47,5 +47,14 @@ npm install -g @byterover/cipher
 # Install Newman
 npm install -g newman
 
+# Install Playwright and Firefox Browser
+npm install -g @playwright/test && npx playwright install firefox
+
 # Start Local Postgres with Docker Compose on Port 5433
 docker-compose -f .devcontainer/docker-compose.yml up -d
+
+# Add cc alias for quick Claude Code access
+echo -e "\n# Claude Code quick alias" >>~/.bashrc
+echo 'alias cc="cd /workspaces/claude-code-pro/ && clear && dotenvx run claude"' >>~/.bashrc
+echo -e "\n# Claude Code quick alias" >>~/.zshrc
+echo 'alias cc="cd /workspaces/claude-code-pro/ && clear && dotenvx run claude"' >>~/.zshrc

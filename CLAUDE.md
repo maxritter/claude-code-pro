@@ -122,6 +122,38 @@ bridge_tool_request(tool="name", arguments={})          # Execute
 **IAM**: `list_users()`, `get_user(name)`, `list_groups()`, `get_group(name)` ⚠️ Requires AWS credentials
 **Lambda**: ⚠️ No tools exposed through MCP Funnel
 
+### 🌐 Browser Automation (Playwright via MCP Funnel)
+**Access Playwright tools through MCP Funnel** - Browser automation with Firefox on ARM64
+
+**Setup:** Playwright MCP server configured with Firefox browser (ARM64 compatible)
+
+**Discovery & Usage:**
+```bash
+# Discover Playwright tools
+discover_tools_by_words(words="playwright browser", enable=true)
+
+# Get tool parameters
+get_tool_schema(tool="playwright__browser_navigate")
+
+# Execute browser actions
+bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "https://example.com"})
+```
+
+**Available Capabilities:**
+- **Navigation**: `browser_navigate`, `browser_navigate_back`
+- **Interaction**: `browser_click`, `browser_type`, `browser_press_key`, `browser_hover`, `browser_drag`
+- **Forms**: `browser_fill_form`, `browser_select_option`, `browser_file_upload`
+- **Inspection**: `browser_snapshot`, `browser_take_screenshot`, `browser_console_messages`, `browser_network_requests`
+- **Tab Management**: `browser_tabs` (list, create, close, select)
+- **Advanced**: `browser_evaluate` (run JavaScript), `browser_wait_for`, `browser_handle_dialog`
+- **Utility**: `browser_resize`, `browser_close`, `browser_install`
+
+**Notes:**
+- Browser: Firefox (ARM64 compatible, installed via `npx playwright install firefox`)
+- All tools prefixed with `playwright__` when using MCP Funnel
+- Screenshots saved to `/tmp/playwright-mcp-output/` directory
+- Supports headless and headed modes
+
 ### 🤖 Custom Agents (.claude/agents/)
 - **debugger**: Error analysis, test failures, stack traces
 - **code-reviewer**: Quality, security, maintainability checks
