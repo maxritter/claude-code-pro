@@ -20,7 +20,6 @@
         "dbaeumer.vscode-eslint",
         "dotenv.dotenv-vscode",
         "esbenp.prettier-vscode",
-        "github.copilot",
         "github.github-vscode-theme",
         "lumirelle.shell-format-rev",
         "marp-team.marp-vscode",
@@ -37,6 +36,7 @@
         "postman.postman-for-vscode",
         "redhat.vscode-xml",
         "redhat.vscode-yaml",
+        "Supermaven.supermaven",
         "yzhang.markdown-all-in-one",
         "zilliz.semanticcodesearch"
       ]
