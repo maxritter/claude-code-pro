@@ -1,0 +1,142 @@
+config_version = "0"
+
+exclude_patterns = [
+  "*_min.*",
+  "*-min.*",
+  "*.min.*",
+  "**/.yarn/**",
+  "**/*.d.ts",
+  "**/assets/**",
+  "**/bower_components/**",
+  "**/build/**",
+  "**/cache/**",
+  "**/config/**",
+  "**/db/**",
+  "**/deps/**",
+  "**/dist/**",
+  "**/extern/**",
+  "**/external/**",
+  "**/generated/**",
+  "**/Godeps/**",
+  "**/gradlew/**",
+  "**/mvnw/**",
+  "**/node_modules/**",
+  "**/protos/**",
+  "**/seed/**",
+  "**/target/**",
+  "**/templates/**",
+  "**/testdata/**",
+  "**/vendor/**",
+  "**/.devcontainer/**",
+  "**/.claude/**",
+  ".venv/**",
+  "**/.tox/**",
+  "misc/",
+]
+
+test_patterns = [
+  "**/test/**",
+  "**/spec/**",
+  "**/*.test.*",
+  "**/*.spec.*",
+  "**/*_test.*",
+  "**/*_spec.*",
+  "**/test_*.*",
+  "**/spec_*.*",
+]
+
+[smells]
+mode = "monitor"
+
+[[source]]
+name = "default"
+default = true
+
+[[plugin]]
+name = "bandit"
+
+[[plugin]]
+name = "black"
+mode = "monitor"
+
+[[plugin]]
+name = "checkov"
+
+[[plugin]]
+name = "dockerfmt"
+
+[[plugin]]
+name = "hadolint"
+
+[[plugin]]
+name = "markdownlint"
+mode = "monitor"
+
+[[plugin]]
+name = "mypy"
+mode = "monitor"
+
+[[plugin]]
+name = "osv-scanner"
+
+[[plugin]]
+name = "radarlint-iac"
+mode = "monitor"
+
+[[plugin]]
+name = "radarlint-python"
+mode = "monitor"
+
+[[plugin]]
+name = "ripgrep"
+mode = "monitor"
+
+[[plugin]]
+name = "ruff"
+
+[[plugin]]
+name = "shellcheck"
+
+[[plugin]]
+name = "shfmt"
+
+[[plugin]]
+name = "trivy"
+drivers = ["config", "fs-vuln"]
+
+[[plugin]]
+name = "trufflehog"
+
+[[plugin]]
+name = "yamllint"
+
+[[exclude]]
+plugins = ["bandit"]
+file_patterns = ["**/test_*.py", "**/tests/**/*.py"]
+
+[[triage]]
+match.rules = ["bandit:assert_used"]
+set.ignored = true
+
+[[triage]]
+match.rules = ["ruff:S101"]
+set.ignored = true
+
+[[triage]]
+match.rules = ["black:*"]
+set.mode = "monitor"
+
+[[triage]]
+match.plugins = ["ruff"]
+match.rules = [
+  "ruff:E501",
+  "ruff:F401",
+  "ruff:F403",
+  "ruff:S602",
+  "ruff:S603",
+  "ruff:D100",
+  "ruff:D101",
+  "ruff:D102",
+  "ruff:D103",
+]
+set.ignored = true

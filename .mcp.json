@@ -1,0 +1,51 @@
+{
+  "mcpServers": {
+    "Ref": {
+      "type": "http",
+      "url": "https://api.ref.tools/mcp?apiKey=${REF_API_KEY}"
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp",
+        "--api-key",
+        "${CONTEXT7_API_KEY}"
+      ]
+    },
+    "claude-context": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@zilliz/claude-context-mcp@latest"
+      ]
+    },
+    "cipher": {
+      "command": "cipher",
+      "args": [
+        "--mode",
+        "mcp",
+        "--agent",
+        "memAgent/cipher.yml"
+      ]
+    },
+    "dbhub-postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@bytebase/dbhub",
+        "--transport",
+        "stdio",
+        "--dsn",
+        "postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/postgres?sslmode=disable"
+      ]
+    },
+    "mcp-funnel": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-funnel"
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+embedding:
+  type: openai
+  model: text-embedding-3-small
+  apiKey: $OPENAI_API_KEY
+
+llm:
+  provider: openai
+  model: gpt-5-mini
+  apiKey: $OPENAI_API_KEY
+
+systemPrompt: "You are a helpful AI assistant with memory capabilities."

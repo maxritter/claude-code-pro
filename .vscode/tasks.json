@@ -1,0 +1,82 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Claude",
+      "type": "shell",
+      "command": "claude",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true,
+        "group": "split-terminals"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "hide": true,
+      "icon": {
+        "id": "cloud",
+        "color": "terminal.ansiBlue"
+      }
+    },
+    {
+      "label": "Terminal",
+      "type": "shell",
+      "command": "${env:SHELL}",
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false,
+        "group": "split-terminals"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": [],
+      "hide": true,
+      "icon": {
+        "id": "terminal",
+        "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "label": "CC Usage",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Terminal",
+        "Claude"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "icon": {
+        "id": "split-horizontal",
+        "color": "terminal.ansiMagenta"
+      }
+    }
+  ]
+}

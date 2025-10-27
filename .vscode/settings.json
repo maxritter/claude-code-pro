@@ -1,0 +1,122 @@
+{
+    "search.exclude": {
+        "**/node_modules/**": true,
+        "target/**": true,
+        ".venv/**": true,
+        "**/.tox/**": true,
+        "**/build/**": true,
+        "**/package-lock.json": true,
+        "**/yarn.lock": true
+    },
+    "files.eol": "\n",
+    "files.autoGuessEncoding": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "python.analysis.indexing": true,
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "",
+            "depth": 20,
+            "includeAllSymbols": true
+        }
+    ],
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestPath": "${workspaceFolder}/.venv/bin/pytest",
+    "python.testing.pytestArgs": [
+        "--import-mode=importlib"
+    ],
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.find.autoFindInSelection": "multiline",
+    "editor.renderWhitespace": "all",
+    "editor.rulers": [
+        120
+    ],
+    "workbench.editor.labelFormat": "long",
+    "prettier.printWidth": 120,
+    "eslint.format.enable": true,
+    "eslint.validate": [
+        "javascript"
+    ],
+    "eslint.workingDirectories": [
+        "./infra"
+    ],
+    "terminal.integrated.scrollback": 5000,
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.organizeImports": "explicit"
+    },
+    "python.languageServer": "Default",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.rulers": [
+            120
+        ],
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+    "ruff.lint.ignore": [
+        "F401"
+    ],
+    "[yaml]": {
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "yaml.validate": true,
+    "yaml.schemaStore.enable": false,
+    "files.associations": {
+        "bitbucket-pipelines.yml": "yaml"
+    },
+    "[json][jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[dockercompose]": {
+        "editor.autoIndent": "advanced",
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": true,
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.tabSize": 4
+    },
+    "outline.collapseItems": "alwaysCollapse",
+    "postman.settings.dotenv-detection-notification-visibility": false,
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.automationProfile.linux": {
+        "path": "/bin/zsh"
+    },
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "driver": "PostgreSQL",
+            "name": "Local",
+            "database": "postgres",
+            "username": "postgres",
+            "password": "postgres"
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "servers": {
+        "awslabs.aws-api-mcp-server": {
+            "command": "uvx",
+            "args": [
+                "awslabs.aws-api-mcp-server@latest"
+            ]
+        },
+        "awslabs.cloudwatch-mcp-server": {
+            "command": "uvx",
+            "args": [
+                "awslabs.cloudwatch-mcp-server@latest"
+            ]
+        },
+        "awslabs.lambda-tool-mcp-server": {
+            "command": "uvx",
+            "args": [
+                "awslabs.lambda-tool-mcp-server@latest"
+            ]
+        },
+        "awslabs.aws-documentation-mcp-server": {
+            "command": "uvx",
+            "args": [
+                "awslabs.aws-documentation-mcp-server@latest"
+            ]
+        },
+        "awslabs.iam-mcp-server": {
+            "command": "uvx",
+            "args": [
+                "awslabs.iam-mcp-server@latest",
+                "--readonly"
+            ]
+        }
+    },
+    "exposeTools": [],
+    "alwaysVisibleTools": [],
+    "exposeCoreTools": [
+        "discover_*",
+        "get_tool_schema",
+        "load_toolset",
+        "bridge_tool_request"
+    ]
+}

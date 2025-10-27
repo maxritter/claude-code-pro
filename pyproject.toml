@@ -1,0 +1,128 @@
+[project]
+name = "claude-code-pro"
+version = "1.0.0"
+description = "Claude Code Pro"
+requires-python = ">=3.13"
+readme = "README.md"
+dependencies = ["ipykernel>=6.29.5", "jupyter>=1.1.1"]
+
+[tool.uv]
+dev-dependencies = [
+    "pylance>=0.24.1",
+    "pyright>=1.1.403",
+    "pytest>=8.3.3",
+    "mypy>=1.16.1",
+    "ruff>=0.12.3",
+    "vulture>=2.14",
+    "tox>=4.28.4",
+    "build>=1.3.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+testpaths = ["src"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::pytest.PytestUnraisableExceptionWarning",
+]
+norecursedirs = [
+    "target/**",
+    ".venv/**",
+    "**/.tox/**",
+    "**/build/**",
+    "misc/",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+exclude = [
+    "target/**",
+    ".venv/**",
+    "**/.tox/**",
+    "**/build/**",
+    "misc/",
+]
+
+[tool.ruff.format]
+docstring-code-format = true
+quote-style = "double"
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+known-first-party = ["app"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle
+    "F",   # pyflakes
+    "I",   # isort
+    "ERA", # eradicate (detect commented-out code)
+]
+ignore = [
+    "D100",
+    "D104",
+    "E902",
+    "E501",
+    "F401",
+    "F403",
+    "F405",
+    "C901",
+    "B905",
+    "N803",
+    "N806",
+    "N815",
+    "W391",
+    "W292",
+    "SIM105",
+    "B008",
+    "B006",
+    "F821",
+    "B012",
+    "F541",
+    "C408",
+    "B007",
+    "B904",
+    "C416",
+    "B017",
+    "SIM108",
+    "SIM113",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D", "UP"]
+
+[tool.vulture]
+exclude = [
+    ".venv/**",
+    "target/**",
+    "**/.tox/**",
+    "**/build/**",
+]
+min_confidence = 80
+paths = ["src"]
+
+[tool.pyright]
+include = ["src"]
+exclude = [
+    "**/node_modules",
+    "**/__pycache__",
+    "target/**",
+    ".venv/**",
+    "**/.tox/**",
+    "**/build/**",
+    "misc/",
+]
+venvPath = "."
+venv = ".venv"
+pythonVersion = "3.13"
+typeCheckingMode = "standard"
+reportUnknownMemberType = false
+reportGeneralTypeIssues = true
+reportOptionalMemberAccess = true

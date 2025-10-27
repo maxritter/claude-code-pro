@@ -1,0 +1,97 @@
+{
+  "name": "Claude Code Pro",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "runArgs": [
+    "--name",
+    "claude-code-pro-devcontainer"
+  ],
+  "workspaceFolder": "/workspaces/claude-code-pro",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "actboy168.tasks",
+        "AmazonWebServices.aws-toolkit-vscode",
+        "anthropic.claude-code",
+        "charliermarsh.ruff",
+        "CodeRabbit.coderabbit-vscode",
+        "dbaeumer.vscode-eslint",
+        "dotenv.dotenv-vscode",
+        "esbenp.prettier-vscode",
+        "github.copilot",
+        "github.github-vscode-theme",
+        "lumirelle.shell-format-rev",
+        "marp-team.marp-vscode",
+        "ms-azuretools.vscode-docker",
+        "ms-python.debugpy",
+        "ms-python.mypy-type-checker",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-python-envs",
+        "ms-toolsai.datawrangler",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg",
+        "pkief.material-icon-theme",
+        "postman.postman-for-vscode",
+        "redhat.vscode-xml",
+        "redhat.vscode-yaml",
+        "yzhang.markdown-all-in-one",
+        "zilliz.semanticcodesearch"
+      ]
+    }
+  },
+  "forwardPorts": [
+    5433
+  ],
+  /* GET FROM: https://containers.dev/features */
+  "features": {
+    /* https://github.com/devcontainers/features/tree/main/src/common-utils */
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "installOhMyZshConfig": true,
+      "upgradePackages": true,
+      "configureZshAsDefaultShell": true
+    },
+    /* https://github.com/devcontainers/features/tree/main/src/node */
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "nvm": "latest",
+      "pnpm": "latest"
+    },
+    /* https://github.com/devcontainers/features/tree/main/src/docker-in-docker */
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": false,
+      "version": "latest"
+    },
+    /* https://github.com/va-h/devcontainers-features/tree/main/src/uv */
+    "ghcr.io/va-h/devcontainers-features/uv:1": {
+      "version": "latest",
+      "shellautocompletion": true
+    },
+    /* https://github.com/devcontainers-extra/features/tree/main/src/ruff */
+    "ghcr.io/devcontainers-extra/features/ruff:1": {
+      "version": "latest"
+    },
+    /* https://github.com/devcontainers-extra/features/tree/main/src/mypy */
+    "ghcr.io/devcontainers-extra/features/mypy:2": {
+      "version": "latest"
+    },
+    /* https://github.com/devcontainers/features/tree/main/src/git */
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    /* https://github.com/devcontainers-extra/features/tree/main/src/fzf */
+    "ghcr.io/devcontainers-extra/features/fzf:1": {
+      "version": "latest"
+    },
+    /* https://github.com/devcontainers/features/tree/main/src/aws-cli */
+    "ghcr.io/devcontainers/features/aws-cli:1": {
+      "version": "latest"
+    }
+  },
+  "postCreateCommand": ".devcontainer/postCreateCommand.sh",
+  "remoteUser": "root",
+  "containerUser": "root"
+}
