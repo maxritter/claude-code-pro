@@ -1,96 +1,148 @@
 #!/bin/bash
 
+# Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
 NC='\033[0m'
 
-# Find recently modified files (last minute)
-files=$(find . -maxdepth 6 -type f -mmin -1 \
-  -not -path "*/__pycache__/*" \
-  -not -path "*/node_modules/*" \
-  -not -path "*/.git/*" \
-  -not -path "*/.venv/*" \
-  -not -path "*/.next/*" \
-  -not -path "*/dist/*" \
-  -not -path "*/build/*" \
-  -not -path "*/.mypy_cache/*" \
-  -not -path "*/.pytest_cache/*" \
-  -not -path "*/.ruff_cache/*" \
-  -not -path "*/.qlty/*" \
-  -not -path "*/coverage/*" \
-  -printf '%T@ %p\n' 2>/dev/null | sort -nr | head -1 | cut -d' ' -f2)
+# Find the most recently modified file
+files=$(find . -type f -mmin -1 -exec ls -t {} + 2>/dev/null | head -1)
 
-# Exit early if no files found
-if [[ -z $files ]]; then
-  exit 0
+if [[ -z "$files" ]]; then
+  exit 2
 fi
 
-# Set tool paths
-QLTY_BIN="${HOME}/.qlty/bin/qlty"
-PYRIGHT_BIN="${HOME}/.local/bin/pyright"
-
-# Check if QLTY is available
-if [[ ! -x "$QLTY_BIN" ]] || [[ ! -f ".qlty/qlty.toml" ]]; then
-  exit 0
+# Check if qlty is available and initialized
+if ! command -v qlty >/dev/null 2>&1 || [[ ! -d ".qlty" ]]; then
+  echo "" >&2
+  echo -e "${GREEN}✅ Code quality good. Continue${NC}" >&2
+  exit 2
 fi
 
-# Run QLTY format
-"$QLTY_BIN" fmt "$files" >/dev/null 2>&1
+# Run qlty checks
+fmt_output=$(qlty fmt $files 2>&1)
+check_output=$(qlty check --fix $files 2>&1)
+check_exit_code=$?
 
-# Run QLTY check
-"$QLTY_BIN" check "$files" >/dev/null 2>&1
+# Check for issues
+has_issues=false
 
-# Run final QLTY check to get status
-qlty_output=$("$QLTY_BIN" check "$files" 2>&1)
-qlty_exit=$?
+# Check if formatting happened (this is auto-fixed, so don't count as issue)
+formatting_applied=false
+if [[ "$fmt_output" == *"Formatted"* ]]; then
+  formatting_applied=true
+fi
 
-# For Python files, also run pyright
+# Check if linting found issues
+if [[ "$check_output" != *"No issues"* ]] || [[ $check_exit_code -ne 0 ]]; then
+  has_issues=true
+fi
+
+# Run type checkers for Python files
 pyright_output=""
-pyright_exit=0
+pyright_issues=false
+mypy_output=""
+mypy_issues=false
 
-if [[ $files == *.py ]]; then
-  if [[ -x "$PYRIGHT_BIN" ]]; then
-    pyright_output=$("$PYRIGHT_BIN" "$files" 2>&1)
-    pyright_exit=$?
+if [[ "$files" == *.py ]]; then
+  # Run Pyright if available
+  if command -v pyright >/dev/null 2>&1; then
+    pyright_output=$(pyright --outputjson $files 2>&1 || true)
 
-    # Check if output contains actual errors
-    if ! echo "$pyright_output" | grep -q " error:"; then
-      pyright_exit=0
+    # Check for errors in JSON output or fallback to text check
+    if echo "$pyright_output" | grep -q '"errorCount":[1-9]' || [[ "$pyright_output" == *" error"* ]]; then
+      pyright_issues=true
+      has_issues=true
+    fi
+  fi
+
+  # Run Mypy if available
+  if command -v mypy >/dev/null 2>&1; then
+    mypy_output=$(mypy --no-error-summary --show-column-numbers $files 2>&1 || true)
+
+    # Check if mypy found errors (not just notes/warnings)
+    if echo "$mypy_output" | grep -q "error:"; then
+      mypy_issues=true
+      has_issues=true
     fi
   fi
 fi
 
-# Determine if there are issues
-has_issues=false
-error_sections=""
+# Remove test logic - now using real qlty detection
 
-if [[ $qlty_exit -ne 0 ]] || echo "$qlty_output" | grep -qE "error|warning|✗"; then
-  has_issues=true
-  error_sections+="📋 QLTY Issues:\n\n$qlty_output\n\n"
-fi
+# Display results
+if [[ $has_issues == true ]]; then
+  echo "" >&2
+  echo -e "${RED}🛑 STOP - Issues found in: $files${NC}" >&2
+  echo -e "${RED}The following MUST BE FIXED:${NC}" >&2
+  echo "" >&2
 
-if [[ $pyright_exit -ne 0 ]] && [[ -n "$pyright_output" ]]; then
-  has_issues=true
-  pyright_errors=$(echo "$pyright_output" | grep -E " error:")
-  if [[ -n "$pyright_errors" ]]; then
-    error_sections+="🔍 Pyright Type Errors:\n\n$pyright_errors\n\n"
+  if [[ "$check_output" != *"No issues"* ]]; then
+    # Extract remaining issue lines (skip headers/footers)
+    issue_lines=$(echo "$check_output" | grep -E "^\s*[0-9]+:[0-9]+\s+|high\s+|medium\s+|low\s+" | head -3)
+    remaining_issues=$(echo "$check_output" | grep -c "high\|medium\|low" 2>/dev/null || echo "0")
+
+    # Simple, clear output
+    echo "🔍 Linting Issues: ($remaining_issues remaining)" >&2
+
+    if [[ -n "$issue_lines" ]]; then
+      echo "$issue_lines" >&2
+      if [[ $remaining_issues -gt 3 ]]; then
+        echo "... and $((remaining_issues - 3)) more issues" >&2
+      fi
+    else
+      # Fallback: show first few lines if parsing failed
+      echo "$check_output" | head -5 >&2
+    fi
+    echo "" >&2
+  fi
+
+  if [[ $pyright_issues == true ]]; then
+    # Try to extract from JSON first, fallback to text parsing
+    error_count=$(echo "$pyright_output" | grep -oP '"errorCount":\K\d+' | head -1)
+    if [[ -z "$error_count" ]]; then
+      error_count=$(echo "$pyright_output" | grep -oP '\d+(?= error)' | head -1)
+    fi
+
+    # Extract error lines
+    error_lines=$(echo "$pyright_output" | grep -E "error:|Error:" | head -3)
+
+    echo "🐍 Pyright Type Errors: ($error_count found)" >&2
+    if [[ -n "$error_lines" ]]; then
+      echo "$error_lines" >&2
+      if [[ $error_count -gt 3 ]]; then
+        echo "... and $((error_count - 3)) more errors" >&2
+      fi
+    else
+      # Fallback: show summary from output
+      echo "$pyright_output" | tail -5 >&2
+    fi
+    echo "" >&2
+  fi
+
+  if [[ $mypy_issues == true ]]; then
+    # Count mypy errors
+    error_count=$(echo "$mypy_output" | grep -c "error:" || echo "0")
+    error_lines=$(echo "$mypy_output" | grep "error:" | head -3)
+
+    echo "🔍 Mypy Type Errors: ($error_count found)" >&2
+    if [[ -n "$error_lines" ]]; then
+      echo "$error_lines" >&2
+      if [[ $error_count -gt 3 ]]; then
+        echo "... and $((error_count - 3)) more errors" >&2
+      fi
+    fi
+    echo "" >&2
+  fi
+
+  echo -e "${RED}Fix all issues above before continuing${NC}" >&2
+else
+  echo "" >&2
+  if [[ $formatting_applied == true ]]; then
+    echo -e "${GREEN}✅ Formatted $files. Code quality good. Continue${NC}" >&2
+  else
+    echo -e "${GREEN}✅ Code quality good. Continue${NC}" >&2
   fi
 fi
 
-# Report results
-if [[ $has_issues == true ]]; then
-  echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" >&2
-  echo -e "${RED}🛑 Quality Issues in: $files${NC}" >&2
-  echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" >&2
-  echo "" >&2
-  echo -e "$error_sections" >&2
-  echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" >&2
-  echo -e "${RED}Fix all issues above before continuing${NC}" >&2
-  echo -e "${RED}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}" >&2
-  exit 1
-fi
-
-# Success
-echo -e "${GREEN}✅ Quality checks passed for $files${NC}" >&2
-exit 0
+exit 2

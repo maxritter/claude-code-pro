@@ -29,6 +29,7 @@
         "ms-python.vscode-pylance",
         "ms-python.vscode-python-envs",
         "ms-toolsai.datawrangler",
+        "ms-toolsai.jupyter",
         "mtxr.sqltools",
         "mtxr.sqltools-driver-pg",
         "pkief.material-icon-theme",
