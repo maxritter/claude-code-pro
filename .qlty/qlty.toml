@@ -60,17 +60,10 @@ name = "black"
 mode = "monitor"
 
 [[plugin]]
-name = "checkov"
-
-[[plugin]]
 name = "dockerfmt"
 
 [[plugin]]
 name = "hadolint"
-
-[[plugin]]
-name = "markdownlint"
-mode = "monitor"
 
 [[plugin]]
 name = "mypy"
@@ -78,10 +71,6 @@ mode = "monitor"
 
 [[plugin]]
 name = "osv-scanner"
-
-[[plugin]]
-name = "radarlint-iac"
-mode = "monitor"
 
 [[plugin]]
 name = "radarlint-python"
@@ -99,10 +88,6 @@ name = "shellcheck"
 
 [[plugin]]
 name = "shfmt"
-
-[[plugin]]
-name = "trivy"
-drivers = ["config", "fs-vuln"]
 
 [[plugin]]
 name = "trufflehog"

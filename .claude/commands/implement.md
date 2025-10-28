@@ -12,6 +12,20 @@ Execute implementations using strict Test-Driven Development, either from a plan
 
 You are now in **Implementation Mode** using Sonnet for efficient execution. Follow TDD principles rigorously while implementing features or fixes.
 
+### Available Subagents
+
+During implementation, leverage these specialized agents:
+
+- **@agent-code-reviewer**: Expert code review specialist for quality, security, and maintainability
+  - Use AFTER completing implementation sections
+  - Ensures high development standards
+  - Validates against plan requirements
+
+- **@.claude/agents/debugger.md**: Debugging specialist for errors and test failures
+  - Use PROACTIVELY when encountering issues
+  - Provides root cause analysis
+  - Implements minimal fixes with prevention recommendations
+
 ### 1. Parse Implementation Request
 
 Determine input type from: $ARGUMENTS
@@ -137,10 +151,14 @@ TodoWrite(todos=[
     {"content": "Verify test passes", "status": "pending", "activeForm": "Verifying test passes"},
     {"content": "Run all unit tests", "status": "pending", "activeForm": "Running all unit tests"},
     {"content": "Check diagnostics", "status": "pending", "activeForm": "Checking diagnostics"},
-    {"content": "Review with code-reviewer agent", "status": "pending", "activeForm": "Reviewing with code-reviewer agent"},
+    {"content": "Review with @agent-code-reviewer", "status": "pending", "activeForm": "Reviewing with @agent-code-reviewer"},
     {"content": "Store learnings in Cipher", "status": "pending", "activeForm": "Storing learnings in Cipher"}
 ])
 ```
+
+**Key Subagents Available:**
+- **@agent-code-reviewer**: Use after completing implementation for quality review
+- **@.claude/agents/debugger.md**: Use when encountering test failures or complex bugs
 
 ### 5. Testing Requirements
 
@@ -203,11 +221,11 @@ uv run mypy .
 uv run pytest --cov=. --cov-report=term
 ```
 
-### 7. Code Review
+### 7. Code Review with @agent-code-reviewer
 
 **After implementation is complete:**
 
-Use the code-reviewer agent:
+Use the @agent-code-reviewer agent for quality assurance:
 ```
 Task(
     subagent_type="code-reviewer",
@@ -215,6 +233,13 @@ Task(
     prompt="Review the implementation of [feature] against the plan and coding standards"
 )
 ```
+
+The @agent-code-reviewer will:
+- Check for code quality, security, and maintainability issues
+- Verify adherence to project standards
+- Suggest improvements and identify potential bugs
+- Ensure test coverage is adequate
+- Validate that the implementation matches the plan
 
 ### 8. Documentation
 
@@ -326,8 +351,33 @@ ask_cipher("Store: [Key insights, patterns discovered, gotchas encountered]")
 5. Debug systematically
 6. Never proceed with failing tests
 
+### When to Use @.claude/agents/debugger.md
+
+Invoke the @.claude/agents/debugger.md agent when:
+- Tests are failing with unclear error messages
+- Encountering unexpected behavior that's hard to trace
+- Stack traces are complex or confusing
+- Need root cause analysis for persistent issues
+- Investigating performance problems or memory leaks
+
+```
+Task(
+    subagent_type="debugger",
+    description="Debug failing tests",
+    prompt="Investigate why [test/feature] is failing and provide root cause analysis with fix"
+)
+```
+
+The @.claude/agents/debugger.md will:
+- Analyze error messages and stack traces
+- Form and test debugging hypotheses
+- Add strategic debug logging
+- Provide root cause explanation
+- Implement minimal fixes
+- Recommend prevention strategies
+
 ### If Blocked
-1. Use debugger agent for complex issues
+1. Use @.claude/agents/debugger.md for complex debugging issues
 2. Search documentation with Ref/Context7
 3. Query Cipher for similar past issues
 4. Ask user for clarification if needed

@@ -17,11 +17,12 @@ fi
 # Install uv venv for Python
 uv sync --frozen
 
-# Install qlty
+# Install qlty and initialize
 curl https://qlty.sh | sh
 echo -e "\nexport QLTY_INSTALL=\"$HOME/.qlty\"" >>~/.zshrc
 echo -e 'export PATH=$QLTY_INSTALL/bin:$PATH' >>~/.zshrc
 qlty init --no-upgrade-check --yes
+qlty check
 
 # Install Claude Code
 curl -fsSL https://claude.ai/install.sh | bash
