@@ -158,6 +158,39 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 - **debugger**: Error analysis, test failures, stack traces
 - **code-reviewer**: Quality, security, maintainability checks
 
+## 📋 Slash Commands
+
+### `/plan [feature or bug description]`
+**Purpose**: Create comprehensive implementation plans for small-to-medium features/fixes
+
+**When to use**:
+- Small-to-medium features (1-3 files)
+- Bug fixes (any complexity)
+- Performance improvements
+- Refactoring tasks
+- Adding test coverage
+
+**What it does**:
+1. Performs deep codebase analysis using Claude Context
+2. Queries Cipher for historical context and patterns
+3. Researches documentation via Ref/Context7
+4. Analyzes dependencies and integration points
+5. Creates detailed implementation plan
+6. Saves plan to `plan/{feature-name}_{date}.md`
+7. Presents for user approval before implementation
+
+**Example**: `/plan Add user authentication with JWT tokens`
+
+**Output**: Comprehensive plan with:
+- Problem analysis and current state
+- Solution design with alternatives
+- Step-by-step implementation tasks
+- Testing strategy
+- Risk mitigation
+- Success criteria
+
+**Decision Matrix**: Use `/plan` for medium complexity. For complex features (4+ files, architecture changes), use Agent-OS instead.
+
 ## Standard Workflow
 
 **Every Task:**
@@ -177,7 +210,7 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 
 ### For Complex Features (Agent-OS Spec-Driven)
 
-**ALWAYS use Agent-OS for:** New features, multi-file changes, API/database changes, architecture modifications
+**ALWAYS use Agent-OS for:** Large features (4+ files), architecture changes, API/database schema changes, multi-step refactoring, new major components
 
 **Process:**
 1. Plan Product (for new projects)
@@ -188,9 +221,29 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 6. Update documentation
 7. Final check: All tests pass, diagnostics clean
 
+### For Medium Features/Fixes (Plan Mode)
+
+**Use `/plan` command for:** Small-to-medium features (1-3 files), bug fixes, performance improvements, refactoring, adding tests
+
+**Process:**
+1. Run `/plan [feature or bug description]`
+2. Opus creates comprehensive plan with deep codebase analysis
+3. Plan saved to `plan/` directory automatically
+4. User reviews and approves plan
+5. Switch to Sonnet for implementation
+6. Follow plan step-by-step with TodoWrite tracking
+7. Run tests and verification
+
+**Why `/plan`?**
+- Faster than Agent-OS for smaller changes
+- Still provides thorough analysis and planning
+- Uses Claude Context, Cipher, Ref, Context7 for comprehensive understanding
+- Creates actionable implementation roadmap
+- Balances speed with thoroughness
+
 ### For Simple Changes
 
-**Use direct workflow for:** Single-file bug fixes (< 10 lines), documentation updates, code style improvements
+**Use direct workflow for:** Single-file bug fixes (< 10 lines), documentation updates, code style improvements, trivial refactoring
 
 ### Universal Requirements (ALWAYS)
 
