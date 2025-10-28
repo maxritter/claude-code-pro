@@ -82,7 +82,6 @@ MIT License.
 
 This project builds on excellent work from the community:
 
-- **[obra/superpowers](https://github.com/obra/superpowers)** - Workflow framework and skills
 - **[buildermethods/agent-os](https://github.com/buildermethods/agent-os)** - Spec-driven development
 - **[campfirein/cipher](https://github.com/campfirein/cipher)** - Cross-session knowledge persistence
 - **[zilliztech/claude-context](https://github.com/zilliztech/claude-context)** - Semantic codebase search

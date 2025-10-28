@@ -217,6 +217,3 @@ __marimo__/
 
 # Cipher
 data/
-
-# Git worktrees
-.worktrees/
