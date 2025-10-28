@@ -33,20 +33,11 @@ curl -fsSL https://raw.githubusercontent.com/hagan/claudia-statusline/main/scrip
 # Install Agent OS
 curl -sSL https://raw.githubusercontent.com/buildermethods/agent-os/main/scripts/base-install.sh | bash
 
-# Install CodeRabbit
-curl -fsSL https://cli.coderabbit.ai/install.sh | bash
-
-# Install SST for serverless development
-curl -fsSL https://sst.dev/install | bash
-
 # Install Dotenvx CLI
 curl -sfS https://dotenvx.sh | bash
 
 # Install Cipher
 npm install -g @byterover/cipher
-
-# Install Newman
-npm install -g newman
 
 # Install Playwright and Firefox Browser
 npm install -g @playwright/test && npx playwright install firefox

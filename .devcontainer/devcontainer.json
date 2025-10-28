@@ -6,7 +6,7 @@
   "runArgs": [
     "--name",
     "claude-code-pro-devcontainer",
-    "--shm-size=1g" // For Chrome
+    "--shm-size=1g"
   ],
   "workspaceFolder": "/workspaces/claude-code-pro",
   "customizations": {
@@ -16,7 +16,6 @@
         "AmazonWebServices.aws-toolkit-vscode",
         "anthropic.claude-code",
         "charliermarsh.ruff",
-        "CodeRabbit.coderabbit-vscode",
         "dbaeumer.vscode-eslint",
         "dotenv.dotenv-vscode",
         "esbenp.prettier-vscode",
@@ -107,9 +106,7 @@
     /* https://github.com/devcontainers/features/tree/main/src/desktop-lite */
     "ghcr.io/devcontainers/features/desktop-lite:1": {
       "version": "latest"
-    },
-    /* https://github.com/schlich/devcontainer-features/tree/main/src/powerlevel10k */
-    "ghcr.io/schlich/devcontainer-features/powerlevel10k:1": {}
+    }
   },
   "postCreateCommand": ".devcontainer/postCreateCommand.sh",
   "remoteUser": "root",

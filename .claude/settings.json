@@ -1,7 +1,0 @@
-{
-  "hooks": {
-    "postToolUse": {
-      "command": ".claude/hooks/file-checker.sh"
-    }
-  }
-}
