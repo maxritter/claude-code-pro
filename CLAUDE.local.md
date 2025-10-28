@@ -123,10 +123,25 @@ bridge_tool_request(tool="name", arguments={})          # Execute
 **IAM**: `list_users()`, `get_user(name)`, `list_groups()`, `get_group(name)` ⚠️ Requires AWS credentials
 **Lambda**: ⚠️ No tools exposed through MCP Funnel
 
-### 🌐 Browser Automation (Playwright via MCP Funnel)
-**Access Playwright tools through MCP Funnel** - Browser automation with Firefox on ARM64
+### 🔥 FireCrawl (Web Scraping & Search) - PREFERRED FOR WEB CONTENT
+**Use FireCrawl instead of WebSearch/WebFetch** - Better structured markdown, more reliable scraping
 
-**Setup:** Playwright MCP server configured with Firefox browser (ARM64 compatible)
+**Discovery:** `discover_tools_by_words(words="firecrawl", enable=true)`
+
+**Tools:**
+- **firecrawl_scrape** - Single page content (fastest, most reliable). Use `maxAge` param for 500% faster cached scrapes.
+- **firecrawl_search** - Web search with optional scraping. Supports operators: `site:`, `intitle:`, `inurl:`, `-exclude`
+- **firecrawl_map** - Discover all URLs on a site before scraping
+- **firecrawl_extract** - Extract structured data via LLM (prices, names, etc) with JSON schema
+- **firecrawl_crawl** - Multi-page crawling (use with care - can exceed token limits)
+- **firecrawl_check_crawl_status** - Check crawl job status
+
+**Best Practice:** Use `firecrawl_search` without formats first, then `firecrawl_scrape` specific URLs
+
+### 🌐 Browser Automation (Playwright via MCP Funnel)
+**Access Playwright tools through MCP Funnel** - Browser automation with Firefox
+
+**Setup:** Playwright MCP server configured with Firefox browser
 
 **Discovery & Usage:**
 ```bash
@@ -150,7 +165,7 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 - **Utility**: `browser_resize`, `browser_close`, `browser_install`
 
 **Notes:**
-- Browser: Firefox (ARM64 compatible, installed via `npx playwright install firefox`)
+- Browser: Firefox (installed via `npx playwright install firefox`)
 - All tools prefixed with `playwright__` when using MCP Funnel
 - Screenshots saved to `/tmp/playwright-mcp-output/` directory
 - Supports headless and headed modes
