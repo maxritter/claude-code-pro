@@ -80,10 +80,11 @@ DO NOT call multiple independent tools in a single response. This session requir
 
 ## Essential Rules
 
+- **Test-Driven Development**: MANDATORY - Write test first, watch fail, implement (RED-GREEN-REFACTOR)
 - **Python**: Always use `uv` for running scripts and installing libraries
-- **Testing**: Always create/update tests for complex changes
+- **Superpowers Workflow**: Use `/brainstorm` → `/write-plan` → `/execute-plan` for medium features/fixes
+- **Agent-OS**: MANDATORY for large/complex features (4+ files, architecture changes)
 - **Code Style**: No inline comments, imports at top, one-line docstrings only
-- **Agent-OS**: MANDATORY for complex features - never skip the workflow
 - **Git Operations**: ONLY read-only Git commands - NEVER stage, commit, push, or modify Git state
 
 ## Git Operations (CRITICAL)
@@ -158,38 +159,109 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 - **debugger**: Error analysis, test failures, stack traces
 - **code-reviewer**: Quality, security, maintainability checks
 
-## 📋 Slash Commands
+## 📋 Slash Commands & Skills (Superpowers)
 
-### `/plan [feature or bug description]`
-**Purpose**: Create comprehensive implementation plans for small-to-medium features/fixes
+### Workflow: Brainstorm → Write Plan → Execute Plan
+
+**Recommended flow:**
+1. `/brainstorm` - Refine design through Socratic dialogue (Opus)
+2. `/write-plan` - Create detailed implementation plan with TDD (Opus)
+3. User reviews and approves plan
+4. `/execute-plan` - Implement with RED-GREEN-REFACTOR in batches (Sonnet)
+
+**Why this workflow?**
+- Separates thinking from doing
+- Ensures thorough design before coding
+- **Enforces test-driven development (write test first, watch fail, implement)**
+- Built-in quality gates between batches
+- Efficient use of models (Opus for planning, Sonnet for execution)
+
+### Slash Commands
+
+#### `/brainstorm` - Interactive Design Refinement
+**Purpose**: Explore and refine your approach before implementation through Socratic dialogue
 
 **When to use**:
-- Small-to-medium features (1-3 files)
-- Bug fixes (any complexity)
-- Performance improvements
-- Refactoring tasks
-- Adding test coverage
+- Starting any new feature or complex bug fix
+- When you need to explore design alternatives
+- When requirements are unclear or need refinement
+- Before jumping into implementation
 
 **What it does**:
-1. Performs deep codebase analysis using Claude Context
-2. Queries Cipher for historical context and patterns
-3. Researches documentation via Ref/Context7
-4. Analyzes dependencies and integration points
-5. Creates detailed implementation plan
-6. Saves plan to `plan/{feature-name}_{date}.md`
-7. Presents for user approval before implementation
+- Interactive Socratic dialogue to refine your design
+- Explores alternatives and trade-offs
+- Helps clarify requirements and approach
+- Prepares you for writing a detailed plan
 
-**Example**: `/plan Add user authentication with JWT tokens`
+**Example**: `/brainstorm` then describe your feature idea
 
-**Output**: Comprehensive plan with:
-- Problem analysis and current state
-- Solution design with alternatives
-- Step-by-step implementation tasks
-- Testing strategy
-- Risk mitigation
-- Success criteria
+#### `/write-plan` - Create Implementation Plan
+**Purpose**: Generate detailed, step-by-step implementation plans with bite-sized tasks
 
-**Decision Matrix**: Use `/plan` for medium complexity. For complex features (4+ files, architecture changes), use Agent-OS instead.
+**When to use**:
+- After brainstorming (or directly if requirements are clear)
+- Small-to-medium features (1-3 files)
+- Bug fixes (any complexity)
+- Performance improvements, refactoring tasks
+
+**What it does**:
+- Creates comprehensive implementation plan
+- Breaks work into manageable, sequential tasks
+- **MANDATORY: Includes testing strategy using TDD at each step**
+- Emphasizes RED-GREEN-REFACTOR cycle
+- Saves plan for execution
+
+**Example**: `/write-plan` then describe what needs to be built
+
+**Recommended model**: Use Opus for thorough planning
+
+#### `/execute-plan` - Batch Execution with Checkpoints
+**Purpose**: Implement plans systematically with quality gates between batches
+
+**When to use**:
+- After a plan has been written and approved
+- When you're ready to start implementation
+
+**What it does**:
+- Executes plan tasks in batches
+- **Follows test-driven development (RED-GREEN-REFACTOR)**
+- Quality checkpoints between batches
+- Verifies tests pass before proceeding
+- Ensures adherence to the plan
+
+**Example**: `/execute-plan` (loads the current plan automatically)
+
+**Recommended model**: Use Sonnet for efficient implementation
+
+### Available Skills
+
+Superpowers includes skills that activate automatically based on context:
+
+**Development Process (CRITICAL):**
+- `test-driven-development` - **Enforces RED-GREEN-REFACTOR cycle (write test first, watch fail, implement)**
+- `testing-anti-patterns` - Prevents testing mocks, test-only production methods
+- `verification-before-completion` - Requires running verification before claiming work complete
+
+**Debugging & Quality:**
+- `systematic-debugging` - Four-phase framework for bugs (investigate, analyze, test, implement)
+- `root-cause-tracing` - Trace errors backward through call stack to find source
+- `condition-based-waiting` - Replace timeouts with condition polling to eliminate flaky tests
+
+**Planning & Execution:**
+- `brainstorming` - Interactive design refinement via Socratic method
+- `writing-plans` - Create comprehensive implementation plans
+- `executing-plans` - Batch execution with review checkpoints
+- `subagent-driven-development` - Dispatch fresh subagents for independent tasks
+
+**Collaboration:**
+- `requesting-code-review` - Dispatch code-reviewer after completing tasks
+- `receiving-code-review` - Handle feedback with technical rigor
+- `using-git-worktrees` - Isolate feature work in git worktrees
+- `finishing-a-development-branch` - Present options for merge, PR, or cleanup
+
+**Architecture:**
+- `defense-in-depth` - Validate at every layer to make bugs structurally impossible
+- `dispatching-parallel-agents` - Handle 3+ independent failures concurrently
 
 ## Standard Workflow
 
@@ -221,24 +293,22 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 6. Update documentation
 7. Final check: All tests pass, diagnostics clean
 
-### For Medium Features/Fixes (Plan Mode)
+### For Medium Features/Fixes (Superpowers Workflow)
 
-**Use `/plan` command for:** Small-to-medium features (1-3 files), bug fixes, performance improvements, refactoring, adding tests
+**Use superpowers workflow for:** Small-to-medium features (1-3 files), bug fixes, performance improvements, refactoring, adding tests
 
 **Process:**
-1. Run `/plan [feature or bug description]`
-2. Opus creates comprehensive plan with deep codebase analysis
-3. Plan saved to `plan/` directory automatically
-4. User reviews and approves plan
-5. Switch to Sonnet for implementation
-6. Follow plan step-by-step with TodoWrite tracking
-7. Run tests and verification
+1. (Optional) `/brainstorm` - Refine design through Socratic dialogue
+2. `/write-plan` - Create detailed implementation plan with TDD (Opus)
+3. User reviews and approves plan
+4. `/execute-plan` - Implement in batches with RED-GREEN-REFACTOR (Sonnet)
 
-**Why `/plan`?**
+**Why superpowers workflow?**
 - Faster than Agent-OS for smaller changes
-- Still provides thorough analysis and planning
-- Uses Claude Context, Cipher, Ref, Context7 for comprehensive understanding
-- Creates actionable implementation roadmap
+- **Enforces test-driven development (write test first, watch fail, implement)**
+- Built-in quality gates between batches
+- Automatic skill activation (TDD, debugging, verification)
+- Efficient model usage (Opus for planning, Sonnet for execution)
 - Balances speed with thoroughness
 
 ### For Simple Changes
@@ -265,22 +335,60 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 
 ## Development Principles
 
-### Testing (NON-NEGOTIABLE)
+### Test-Driven Development (NON-NEGOTIABLE)
 
-**MANDATORY after every implementation:**
+**🚨 CRITICAL: ALL code MUST follow RED-GREEN-REFACTOR cycle**
 
-1. **Unit Tests:** `uv run pytest -m unit` (fast, isolated, mocked dependencies)
-2. **Integration Tests:** `uv run pytest -m integration` (end-to-end with real dependencies)
-3. **Coverage Check:** `uv run pytest --cov=. --cov-report=term` (ensure adequate coverage)
+**The Iron Law:**
+```
+NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
+```
+
+**RED-GREEN-REFACTOR Cycle:**
+1. **RED** - Write one failing test showing desired behavior
+2. **Verify RED** - Watch it fail for the right reason (MANDATORY, never skip)
+3. **GREEN** - Write minimal code to pass the test
+4. **Verify GREEN** - Watch it pass, ensure other tests still pass
+5. **REFACTOR** - Clean up while keeping tests green
+6. **Repeat** - Next test for next behavior
+
+**Why test-first?**
+- Tests written after pass immediately = prove nothing
+- You never saw the test catch the bug
+- Tests-first force edge case discovery before implementing
+- Tests-after verify remembered edge cases (you forgot some)
 
 **Testing Rules:**
-- ✅ Write tests for all new functions/classes
-- ✅ Update tests when behavior changes
+- ✅ Write test FIRST, watch it FAIL, then implement
+- ✅ If you didn't watch the test fail, you don't know if it tests the right thing
+- ✅ Minimal tests: one behavior, clear name, real code (not mocks)
 - ✅ Never commit failing tests
 - ✅ Fix code when tests fail (don't change tests to pass)
 - ✅ Use pytest markers: `@pytest.mark.unit`, `@pytest.mark.integration`
 - **🚨 NEVER, EVER IGNORE FAILING TESTS** - If tests fail, STOP immediately and fix them before proceeding
 - **🚨 NO DEPLOYMENTS WITH FAILING TESTS** - Never build, deploy, or mark work complete if ANY test fails
+- **🚨 Code before test? DELETE IT. Start over with TDD.**
+
+**Running Tests:**
+- **Unit Tests:** `uv run pytest -m unit` (fast, isolated, mocked dependencies)
+- **Integration Tests:** `uv run pytest -m integration` (end-to-end with real dependencies)
+- **Coverage Check:** `uv run pytest --cov=. --cov-report=term` (target 80%+ for new code)
+
+**Common Rationalizations (ALL WRONG):**
+- ❌ "Too simple to test" → Simple code breaks. Test takes 30 seconds.
+- ❌ "I'll test after" → Tests passing immediately prove nothing.
+- ❌ "Already manually tested" → Ad-hoc ≠ systematic. No record, can't re-run.
+- ❌ "Deleting X hours is wasteful" → Sunk cost fallacy. Keeping unverified code is technical debt.
+- ❌ "It's about spirit not ritual" → Tests-after = "what does this do?" Tests-first = "what should this do?"
+
+**Red Flags - STOP and Start Over:**
+- Code before test
+- Test after implementation
+- Test passes immediately
+- Can't explain why test failed
+- "I already manually tested it"
+- "Keep as reference" or "adapt existing code"
+- "This is different because..."
 
 ### Code Quality
 
@@ -304,7 +412,8 @@ bridge_tool_request(tool="playwright__browser_navigate", arguments={"url": "http
 - **NEVER create files unless absolutely necessary**
 - **ALWAYS prefer editing existing files**
 - **NEVER proactively create documentation files (*.md) unless explicitly requested**
-- **ALWAYS use Agent-OS workflow for complex features**
-- **ALWAYS write/update tests after implementation**
+- **ALWAYS follow test-driven development (write test first, watch fail, implement)**
+- **ALWAYS use superpowers workflow (/brainstorm → /write-plan → /execute-plan) for medium features**
+- **ALWAYS use Agent-OS workflow for large/complex features (4+ files, architecture changes)**
 - **ALWAYS check diagnostics before and after changes**
 - **NEVER use inline imports** - All imports must be at the top of the file
