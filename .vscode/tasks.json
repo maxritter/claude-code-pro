@@ -4,7 +4,7 @@
     {
       "label": "Claude",
       "type": "shell",
-      "command": "claude",
+      "command": "dotenvx run claude",
       "group": {
         "kind": "build",
         "isDefault": false
@@ -56,7 +56,7 @@
       }
     },
     {
-      "label": "CC Usage",
+      "label": "OPEN CC",
       "dependsOrder": "parallel",
       "dependsOn": [
         "Terminal",

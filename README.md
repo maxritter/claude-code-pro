@@ -86,9 +86,11 @@
 - Open folder in VS Code, click on the button on the bottom-left: `Reopen in Container`
 - Wait for automatic build to finish, this can take a couple of minutes
 - Copy `.env.example` to `.env` and add your credentials and API keys
-- Open the `Semantic Code Search` extension tab and run the `Index Current Codebase` command
-- Launch the integrated terminal, always allow dotenv, then run `cc` and finish the setup
-- Start coding with Claude Code Pro and watch the Masterclass to learn more!
+- In the Command Palette, run `Developer: Reload Window` to apply all settings
+- In the launched terminal, always allow dotenv (a), then run `cc` and finish the setup
+- Run `/config` to set auto-connect to IDE to true, then run `/ide` to connect to VS Code diagnostics
+- You can click "OPEN CC" in the lower bar to start a split terminal and monitor usage with `/usage`
+- Start coding with Claude Code Pro and watch the Masterclass to learn more advanced techniques!
 
 ---
 

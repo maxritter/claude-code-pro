@@ -21,8 +21,7 @@ uv sync --frozen
 curl https://qlty.sh | sh
 echo -e "\nexport QLTY_INSTALL=\"$HOME/.qlty\"" >>~/.zshrc
 echo -e 'export PATH=$QLTY_INSTALL/bin:$PATH' >>~/.zshrc
-qlty init --no-upgrade-check --yes
-qlty check
+/root/.qlty/bin/qlty check --install-only
 
 # Install Claude Code
 curl -fsSL https://claude.ai/install.sh | bash
