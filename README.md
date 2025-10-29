@@ -2,7 +2,7 @@
 
 <img src="images/logo.png" alt="Claude Code Pro" width="400">
 
-### Professional Framework for Production-Grade Software Development ⚙️💻
+### Professional System for Production-Grade Software Development ⚙️💻
 
 **Transforms Claude Code from a junior assistant into a senior software engineer.**
 
