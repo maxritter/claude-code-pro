@@ -110,13 +110,11 @@ Options:
 After design is validated, write it to a permanent document:
 - **File location:** `docs/designs/YYYY-MM-DD-<topic>-design.md` (use actual date and descriptive topic)
 - **Content:** Capture the design as discussed and validated in Phase 3, organized into the sections that emerged from the conversation
-- Commit the design document to git before proceeding
 
 ### Phase 5: Planning Handoff
 
 **Output from this phase:**
 - Design document saved to `docs/designs/YYYY-MM-DD-<topic>-design.md`
-- Document committed to git
 
 **Transition to spec-plan:**
 

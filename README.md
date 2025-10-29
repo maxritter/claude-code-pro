@@ -54,15 +54,15 @@
 - **Playwright** - Browser automation
 - **MCP Funnel** - Tool filtering for token optimization
 
-### 🛠️ 3 Testing Tools
+### 🛠️ 3 Testing Tools (Feedback / Unit / Integration / End-to-End)
 - **pytest** - Unit and integration testing with uv
 - **Newman** - API end-to-end testing with Postman collections
 - **Qlty** - Automated code quality hooks
 
 ### 📋 3 Slash Commands (Spec-Driven Workflow)
-- `/spec-design` - Brainstorm → Design document
-- `/spec-plan` - Design → Implementation plan
-- `/spec-implement` - Plan → Production-grade code
+- `/spec-design` - Brainstorming with User → Design Document Output (Opus 4.1)
+- `/spec-plan` - Design Document Input → Implementation Plan Output (Opus 4.1)
+- `/spec-implement` - Implementation Plan Input → Production-Grade Code (Sonnet 4.5)
 
 ### 🐳 Automated Dev Container Setup
 - **9 DevContainer Features** - Zsh, Node.js, Docker-in-Docker, uv, ruff, mypy, git, fzf, desktop

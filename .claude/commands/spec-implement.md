@@ -17,7 +17,7 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 - **This command (spec-implement):** Implementation Plan → Working Code
 
 **Input location:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
-**Output:** Working, tested code committed to git
+**Output:** Working, tested code
 
 ## MCP Tools for This Stage
 
@@ -73,8 +73,7 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 6. **Implement** - Write minimal code to pass
 7. **Verify** - Check diagnostics and run tests
 8. **E2E Test (IF API)** - Write and run Newman/Postman E2E tests
-9. **Commit** - Git commit (user does this, not you)
-10. **Store** - Save discoveries in Cipher
+9.  **Store** - Save discoveries in Cipher
 
 ## API End-to-End Testing with Newman
 
@@ -288,8 +287,6 @@ After all tasks complete:
 
 ✅ **Allowed:** `git status`, `git diff`, `git log`, `git show`, `git branch` (list)
 ❌ **FORBIDDEN:** `git add`, `git commit`, `git push`, `git pull`, `git merge`, `git rebase`, `git checkout`, `git reset`, `git stash`
-
-**When plan says "commit":** Tell user "Ready to commit these changes" and STOP.
 
 ## Remember
 

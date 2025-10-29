@@ -7,7 +7,7 @@ model: opus
 
 ## Overview
 
-Write comprehensive implementation plans assuming the engineer has zero context for our codebase and questionable taste. Document everything they need to know: which files to touch for each task, code, testing, docs they might need to check, how to test it. Give them the whole plan as bite-sized tasks. DRY. YAGNI. TDD. Frequent commits.
+Write comprehensive implementation plans assuming the engineer has zero context for our codebase and questionable taste. Document everything they need to know: which files to touch for each task, code, testing, docs they might need to check, how to test it. Give them the whole plan as bite-sized tasks. DRY. YAGNI. TDD.
 
 Assume they are a skilled developer, but know almost nothing about our toolset or problem domain. Assume they don't know good test design very well.
 
@@ -74,8 +74,7 @@ If no argument provided, ask: "Which design document should I create a plan from
 - "Write the failing test" - step
 - "Run it to make sure it fails" - step
 - "Implement the minimal code to make the test pass" - step
-- "Run the tests and make sure they pass" - step
-- "Commit" - step
+- "Run the tests and make sure hey pass" - step
 
 ## Plan Document Header
 
@@ -153,15 +152,7 @@ Create/update Postman collection: `postman/collections/feature-name.json`
 **Step 6: (IF API) Run Newman E2E test**
 
 Run: `newman run postman/collections/feature-name.json -e postman/environments/dev.json`
-Expected: All tests pass
-
-**Step 7: Commit**
-
-```bash
-git add tests/path/test.py src/path/file.py postman/collections/feature-name.json
-git commit -m "feat: add specific feature with E2E tests"
-```
-```
+Expected: All tests pass.
 
 ## Skills to Reference in Plans
 
@@ -205,7 +196,6 @@ git commit -m "feat: add specific feature with E2E tests"
 ✅ **TDD Mandatory** - Test first, watch fail, implement, watch pass
 ✅ **DRY** - Don't repeat yourself
 ✅ **YAGNI** - You aren't gonna need it (no speculative features)
-✅ **Frequent commits** - After each passing test
 ✅ **Exact file paths** - No ambiguity about where code goes
 ✅ **Complete code examples** - Never "add validation here"
 ✅ **Exact verification commands** - With expected output
@@ -218,13 +208,12 @@ git commit -m "feat: add specific feature with E2E tests"
 - Complete code in plan (not "add validation")
 - Exact commands with expected output
 - Reference relevant skills with @ syntax
-- DRY, YAGNI, TDD, frequent commits
+- DRY, YAGNI, TDD
 
 ## Execution Handoff
 
 **Output from this phase:**
 - Implementation plan saved to `docs/plans/YYYY-MM-DD-<feature-name>.md`
-- Plan document committed to git
 
 **Transition to spec-implement:**
 
