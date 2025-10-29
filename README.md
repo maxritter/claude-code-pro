@@ -10,7 +10,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Optimized-blue)](https://claude.ai)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+![Spec-Driven](https://img.shields.io/badge/Spec-Driven-orange.svg)
+![TDD](https://img.shields.io/badge/TDD-Test--Driven--Development-green.svg)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 #### More information ➡️ [www.claude-code.pro](https://www.claude-code.pro)
 
