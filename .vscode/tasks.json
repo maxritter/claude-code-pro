@@ -56,7 +56,7 @@
       }
     },
     {
-      "label": "OPEN CC",
+      "label": "USAGE",
       "dependsOrder": "parallel",
       "dependsOn": [
         "Terminal",

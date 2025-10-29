@@ -52,7 +52,7 @@
 
 ---
 
-## 🚀 Installation
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -72,10 +72,18 @@
 ### Configuration
 
 - In the launched terminal, always allow dotenv (a), then run `cc` and finish the setup
-- Run `/config` to set auto-connect to IDE to true, then run `/ide` to connect to VS Code diagnostics
-- You can click "OPEN CC" in the lower bar to start a split terminal and monitor usage with `/usage`
+- Run `/config` to set auto-connect to IDE to true and disable auto-compaction, enable verbose output
+- Run `/ide` to connect to VS Code diagnostics and make sure all MCP servers for `/mcp` are online
+- You can click `USAGE` in the lower bar to start a split terminal and monitor usage with `/usage`
 - Open Claude Code in the IDE Terminal, Extension or an external Terminal like Warp with the `cc` command
-- Start coding with Claude Code Pro and watch the upcoming Masterclass to learn more! ⤵️
+
+### First Steps
+
+- Start a new project by running `/spec-design` and follow the Spec-Driven Development workflow
+- Use `/spec-plan` to create an implementation plan from the design document
+- Use `/spec-implement` to implement production-grade code from the implementation plan
+- Watch as CC automatically applies best practices, testing, and quality control with every step
+- Enjoy coding with Claude Code Pro and watch the upcoming Masterclass to learn more techniques! ⤵️
 
 ---
 
