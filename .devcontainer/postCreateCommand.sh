@@ -27,17 +27,17 @@ qlty check
 # Install Claude Code
 curl -fsSL https://claude.ai/install.sh | bash
 
-# Install Claudia statusline
+# Install CC Statusline
 curl -fsSL https://raw.githubusercontent.com/hagan/claudia-statusline/main/scripts/quick-install.sh | bash
-
-# Install Agent OS
-curl -sSL https://raw.githubusercontent.com/buildermethods/agent-os/main/scripts/base-install.sh | bash
 
 # Install Dotenvx CLI
 curl -sfS https://dotenvx.sh | bash
 
 # Install Cipher
 npm install -g @byterover/cipher
+
+# Install Newman
+npm install -g newman
 
 # Install Playwright and Firefox Browser
 npm install -g @playwright/test && npx playwright install firefox

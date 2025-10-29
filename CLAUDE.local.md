@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working with this repository.
+This file provides guidance to Claude Code when working with this repository without the Spec-Driven Flow.
 
 ## 🎯 Role & Purpose
 
@@ -109,14 +109,6 @@ Better than WebSearch/WebFetch - structured markdown, reliable scraping
 - Advanced: `browser_evaluate` (JavaScript), `browser_wait_for`
 
 **Note:** Uses Firefox, screenshots saved to `/tmp/playwright-mcp-output/`
-
-### ☁️ AWS Tools (via MCP Funnel)
-
-**Enable:** `discover_tools_by_words(words="aws", enable=true)`
-
-- **AWS CLI:** `suggest_aws_commands(query)`, `call_aws(command)`
-- **CloudWatch:** `get_metric_data()`, `get_active_alarms()`
-- **IAM:** `list_users()`, `get_user(name)` (requires credentials)
 
 ### 🔧 MCP Funnel Pattern
 ```bash

@@ -7,18 +7,6 @@
     "firecrawl-mcp": {
       "command": "npx",
       "args": ["-y", "firecrawl-mcp"]
-    },
-    "awslabs.cdk-mcp-server": {
-      "command": "uvx",
-      "args": ["awslabs.cdk-mcp-server@latest"]
-    },
-    "awslabs.aws-api-mcp-server": {
-      "command": "uvx",
-      "args": ["awslabs.aws-api-mcp-server@latest"]
-    },
-    "awslabs.cloudwatch-mcp-server": {
-      "command": "uvx",
-      "args": ["awslabs.cloudwatch-mcp-server@latest"]
     }
   },
   "exposeTools": [],

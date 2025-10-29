@@ -13,12 +13,13 @@
     "vscode": {
       "extensions": [
         "actboy168.tasks",
-        "AmazonWebServices.aws-toolkit-vscode",
         "anthropic.claude-code",
         "charliermarsh.ruff",
+        "CodeRabbit.coderabbit-vscode",
         "dbaeumer.vscode-eslint",
         "dotenv.dotenv-vscode",
         "esbenp.prettier-vscode",
+        "GitHub.copilot",
         "github.github-vscode-theme",
         "lumirelle.shell-format-rev",
         "marp-team.marp-vscode",
@@ -36,7 +37,6 @@
         "postman.postman-for-vscode",
         "redhat.vscode-xml",
         "redhat.vscode-yaml",
-        "Supermaven.supermaven",
         "yzhang.markdown-all-in-one",
         "zilliz.semanticcodesearch"
       ]
@@ -98,10 +98,6 @@
     },
     /* https://github.com/devcontainers-extra/features/tree/main/src/fzf */
     "ghcr.io/devcontainers-extra/features/fzf:1": {
-      "version": "latest"
-    },
-    /* https://github.com/devcontainers/features/tree/main/src/aws-cli */
-    "ghcr.io/devcontainers/features/aws-cli:1": {
       "version": "latest"
     },
     /* https://github.com/devcontainers/features/tree/main/src/desktop-lite */
