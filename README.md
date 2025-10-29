@@ -18,7 +18,7 @@
 
 **This repository is the complete production setup from our 12-module video masterclass:**
 
-#### [→ Enroll Now at Claude-Code.Dev](https://claude-code.dev)
+#### [→ Enroll Now at Claude-Code.Pro](https://claude-code.pro)
 
 **What you'll learn:**
 - 🐳 Automated dev container setup with Docker/OrbStack
