@@ -2,11 +2,11 @@
 
 <img src="images/logo.png" alt="Claude Code Pro" width="400">
 
-### 🎯 Production-Grade Framework for Professional Developers 🎯
+### Professional Framework for Production-Grade Software Development 💎⚙️💻
 
 **Transforms Claude Code from a junior assistant into a senior software engineer.**
 
-**Stop "vibing" code, start shipping systematically with Spec-Driven Development & TDD.**
+**Stop "vibing" code, start shipping systematically with pec-Driven Development, TDD, and much more!**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Optimized-blue)](https://claude.ai)
@@ -14,31 +14,17 @@
 
 ---
 
-## 🎬 Video Masterclass
-
-**This repository is the complete production setup from our 12-module video masterclass:**
-
-#### [→ Enroll Now at Claude-Code.Pro](https://claude-code.pro)
-
-**What you'll learn:**
-- 🐳 Automated dev container setup with Docker/OrbStack
-- 🎨 Professional IDE configuration
-- ⌨️ Optimal terminal experience with voice input
-- 🔍 Semantic code search with vector databases
-- 🔌 MCP integration with context-optimization techniques
-- 🧠 Cross-session memory layer that scales with your codebase
-- ✅ Built-in quality control with hooks and CLI tools
-- 📋 Optimized Spec-driven workflow (design → plan → implement)
-- 🧪 Test-driven development enforcement
-- 🚀 Applying all techniques to a production-grade project
-
----
-
 ## ⚡ What's Inside
 
-**Claude Code Pro is token-optimized and built using latest techniques such as the new Skills feature:**
+**Claude Code Pro is token-optimized and built using latest techniques such as the new skills feature:**
 
-### 🎨 19 Skills (Auto-Enforce Best Practices)
+### 🐳 Automated Dev Container Setup (VS Code / Cursor / Windsurf)
+- **9 DevContainer Features** - Zsh, Node.js, Docker-in-Docker, uv, ruff, mypy, git, fzf, desktop
+- **27 VS Code Extensions** - Python, Docker, SQL, testing, formatting, and development tools
+- **7 CLI Tools** - qlty, Claude Code, Statusline, dotenvx, Cipher, Newman, Playwright
+- **PostgreSQL Database** - Local instance on port 5433 for development and testing
+
+### 🎨 19 Skills (Auto-Enforce Best Practices for Spec-Driven & TDD)
 - **6 Testing Skills** - TDD, test writing, anti-patterns, debugging, verification, code review
 - **5 Global Skills** - Coding style, commenting, conventions, error handling, validation
 - **4 Backend Skills** - API design, models, queries, migrations
@@ -54,21 +40,15 @@
 - **Playwright** - Browser automation
 - **MCP Funnel** - Tool filtering for token optimization
 
-### 🛠️ 3 Testing Tools (Feedback / Unit / Integration / End-to-End)
+### 🛠️ 3 Testing Tools (Feedback-Loop / Unit / Integration / E2E)
 - **pytest** - Unit and integration testing with uv
 - **Newman** - API end-to-end testing with Postman collections
 - **Qlty** - Automated code quality hooks
 
-### 📋 3 Slash Commands (Spec-Driven Workflow)
+### 📋 3 Slash Commands (Token-Optimized Spec-Driven Workflow)
 - `/spec-design` - Brainstorming with User → Design Document Output (Opus 4.1)
 - `/spec-plan` - Design Document Input → Implementation Plan Output (Opus 4.1)
 - `/spec-implement` - Implementation Plan Input → Production-Grade Code (Sonnet 4.5)
-
-### 🐳 Automated Dev Container Setup
-- **9 DevContainer Features** - Zsh, Node.js, Docker-in-Docker, uv, ruff, mypy, git, fzf, desktop
-- **27 VS Code Extensions** - Python, Docker, SQL, testing, formatting, and development tools
-- **7 CLI Tools** - qlty, Claude Code, Statusline, dotenvx, Cipher, Newman, Playwright
-- **PostgreSQL Database** - Local instance on port 5433 for development and testing
 
 ---
 
@@ -80,17 +60,41 @@
 - **[VS Code Stable](https://code.visualstudio.com/)** or **[Cursor](https://cursor.com/)**
 - **[Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)**
 
-### Setup
+### Installation
 
 - Clone this repository and install the prerequisites from above
 - Open folder in VS Code, click on the button on the bottom-left: `Reopen in Container`
 - Wait for automatic build to finish, this can take a couple of minutes
 - Copy `.env.example` to `.env` and add your credentials and API keys
 - In the Command Palette, run `Developer: Reload Window` to apply all settings
+
+### Configuration
+
 - In the launched terminal, always allow dotenv (a), then run `cc` and finish the setup
 - Run `/config` to set auto-connect to IDE to true, then run `/ide` to connect to VS Code diagnostics
 - You can click "OPEN CC" in the lower bar to start a split terminal and monitor usage with `/usage`
-- Start coding with Claude Code Pro and watch the Masterclass to learn more advanced techniques!
+- Open Claude Code in the IDE Terminal, Extension or an external Terminal like Warp with the `cc` command
+- Start coding with Claude Code Pro and watch the upcoming Masterclass to learn more advanced techniques!
+
+---
+
+## 🎬 Coming Soon! Video Masterclass
+
+**If you want to dive deeper into the setup and advanced usage of this framework, check out the upcoming video masterclass with 12 comprehensive modules and 50+ detailed lessons:**
+
+#### [→ www.claude-code.pro](https://www.claude-code.pro)
+
+**What you'll learn:**
+- 🐳 Details about the automated dev container setup
+- 🎨 Professional IDE configuration techniques
+- ⌨️ Optimal terminal experience with voice input
+- 🔍 Semantic code search with vector databases
+- 🔌 MCP integration with context-optimization techniques
+- 🧠 Cross-session memory layer that scales with your codebase
+- ✅ Built-in quality control with hooks and CLI tools
+- 📋 Optimized Spec-driven workflow (design → plan → implement)
+- 🧪 Test-driven development methodology and enformcement
+- 🚀 Applying all techniques to a real-world project
 
 ---
 
