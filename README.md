@@ -12,6 +12,8 @@
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Optimized-blue)](https://claude.ai)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
+#### More information ➡️ [www.claude-code.pro](https://www.claude-code.pro)
+
 ---
 
 ## ⚡ What's Inside
