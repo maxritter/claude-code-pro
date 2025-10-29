@@ -6,7 +6,7 @@
 
 **Transforms Claude Code from a junior assistant into a senior software engineer.**
 
-**Stop "vibing" code, start shipping systematically with pec-Driven Development, TDD, and much more!**
+**Stop "vibing" code, start shipping systematically with Spec-Driven Development, TDD, and much more!**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Optimized-blue)](https://claude.ai)
@@ -57,8 +57,9 @@
 ### Prerequisites
 
 - **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** or **[OrbStack](https://orbstack.dev/download)**
-- **[VS Code Stable](https://code.visualstudio.com/)** or **[Cursor](https://cursor.com/)**
+- **[VS Code](https://code.visualstudio.com/)** or **[Cursor](https://cursor.com/)** or **[Windsurf](https://windsurf.dev/)**
 - **[Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)**
+- **Optional** : Install [Warp Terminal](https://www.warp.dev/) for an optimized terminal experience
 
 ### Installation
 
