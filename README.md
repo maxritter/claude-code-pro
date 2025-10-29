@@ -54,14 +54,14 @@
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### 📋 Prerequisites
 
 - **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** or **[OrbStack](https://orbstack.dev/download)**
 - **[VS Code](https://code.visualstudio.com/)** or **[Cursor](https://cursor.com/)** or **[Windsurf](https://windsurf.dev/)**
 - **[Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)**
 - **Optional** : **[Warp](https://www.warp.dev/)** for the best terminal experience
 
-### Installation
+### 📥 Installation
 
 - Clone this repository and install the prerequisites from above
 - Open folder in VS Code, click on the button on the bottom-left: `Reopen in Container`
@@ -69,7 +69,7 @@
 - Copy `.env.example` to `.env` and add your credentials and API keys
 - In the Command Palette, run `Developer: Reload Window` to apply all settings
 
-### Configuration
+### ⚙️ Configuration
 
 - In the launched terminal, always allow dotenv (a), then run `cc` and finish the setup
 - Run `/config` to set auto-connect to IDE to true and disable auto-compaction, enable verbose output
@@ -77,7 +77,7 @@
 - You can click `USAGE` in the lower bar to start a split terminal and monitor usage with `/usage`
 - Open Claude Code in the IDE Terminal, Extension or an external Terminal like Warp with the `cc` command
 
-### First Steps
+### 👣 First Steps
 
 - Start a new project by running `/spec-design` and follow the Spec-Driven Development workflow
 - Use `/spec-plan` to create an implementation plan from the design document
@@ -91,9 +91,9 @@
 
 **If you want to dive deeper into the setup and advanced usage of this framework, check out the upcoming video masterclass with 12 comprehensive modules and 50+ detailed lessons:**
 
-### [www.claude-code.pro](https://www.claude-code.pro)
+### ➡️ [www.claude-code.pro](https://www.claude-code.pro)
 
-**What you'll learn:**
+### 💡 What you'll learn:
 - 🐳 Details about the automated dev container setup
 - 🎨 Professional IDE configuration techniques
 - ⌨️ Optimal terminal experience with voice input
