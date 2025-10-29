@@ -5,7 +5,7 @@
   },
   "runArgs": [
     "--name",
-    "claude-code-pro-devcontainer",
+    "claude-code-pro",
     "--shm-size=1g"
   ],
   "workspaceFolder": "/workspaces/claude-code-pro",
@@ -70,7 +70,7 @@
     },
     /* https://github.com/devcontainers/features/tree/main/src/node */
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts",
+      "version": "23", // Claude Context is not compatible with version 24 yet
       "nvm": "latest",
       "pnpm": "latest"
     },

@@ -62,7 +62,13 @@
 ### 📋 3 Slash Commands (Spec-Driven Workflow)
 - `/spec-design` - Brainstorm → Design document
 - `/spec-plan` - Design → Implementation plan
-- `/spec-implement` - Plan → Working code
+- `/spec-implement` - Plan → Production-grade code
+
+### 🐳 Automated Dev Container Setup
+- **9 DevContainer Features** - Zsh, Node.js, Docker-in-Docker, uv, ruff, mypy, git, fzf, desktop
+- **27 VS Code Extensions** - Python, Docker, SQL, testing, formatting, and development tools
+- **7 CLI Tools** - qlty, Claude Code, Statusline, dotenvx, Cipher, Newman, Playwright
+- **PostgreSQL Database** - Local instance on port 5433 for development and testing
 
 ---
 
@@ -77,8 +83,12 @@
 ### Setup
 
 - Clone this repository and install the prerequisites from above
-- Open in VS Code, click on the button on the bottom-left: `Reopen in Container`
-- Wait for automatic build to finish - you're ready to go!
+- Open folder in VS Code, click on the button on the bottom-left: `Reopen in Container`
+- Wait for automatic build to finish, this can take a couple of minutes
+- Copy `.env.example` to `.env` and add your credentials and API keys
+- Open the `Semantic Code Search` extension tab and run the `Index Current Codebase` command
+- Launch the integrated terminal, always allow dotenv, then run `cc` and finish the setup
+- Start coding with Claude Code Pro and watch the Masterclass to learn more!
 
 ---
 
@@ -90,10 +100,16 @@ Contributions welcome: custom skills, MCP integrations, workflow improvements, b
 
 ## 🙏 Acknowledgments
 
-**Core Infrastructure:**
-- **[campfirein/cipher](https://github.com/campfirein/cipher)** - Cross-session memory
-- **[zilliztech/claude-context](https://github.com/zilliztech/claude-context)** - Semantic code search
+**Tools:**
+- **[campfirein/cipher](https://github.com/campfirein/cipher)** - CC Cross-session memory
+- **[zilliztech/claude-context](https://github.com/zilliztech/claude-context)** - CC Semantic code search
+- **[hagan/claudia-statusline](https://github.com/hagan/claudia-statusline)** - CC Status line integration
+- **[chris-schra/mcp-funnel](https://github.com/chris-schra/mcp-funnel)** - CC MCP tool filtering
+- **[astral-sh/uv](https://github.com/astral-sh/uv)** - Fast Python package manager
+- **[astral-sh/ruff](https://github.com/astral-sh/ruff)** - Fast Python linter and formatter
 - **[qltysh/qlty](https://github.com/qltysh/qlty)** - Code quality automation
+- **[dotenvx/dotenvx](https://github.com/dotenvx/dotenvx)** - Environment variable management
+- **[postman/newman](https://github.com/postman/newman)** - End-to-End API testing
 
 **MCP Servers:**
 - **[upstash/context7](https://github.com/upstash/context7)** - Library documentation
@@ -103,10 +119,9 @@ Contributions welcome: custom skills, MCP integrations, workflow improvements, b
 - **[microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)** - Browser automation
 - **[chris-schra/mcp-funnel](https://github.com/chris-schra/mcp-funnel)** - Tool filtering
 
-**Spec-Driven Development Inspiration:**
-- **[buildermethods/agent-os](https://github.com/buildermethods/agent-os)** - Commands & skills framework
-- **[obra/superpowers](https://github.com/obra/superpowers)** - Workflow patterns
-- **[github/spec-kit](https://github.com/github/spec-kit)** - Specification toolkit
+**Inspiration:**
+- **[buildermethods/agent-os](https://github.com/buildermethods/agent-os)** - For Spec-driven workflow
+- **[obra/superpowers](https://github.com/obra/superpowers)** - For Spec-driven skills
 
 ---
 
@@ -114,6 +129,6 @@ Contributions welcome: custom skills, MCP integrations, workflow improvements, b
 
 Made with ❤️ by [Max Ritter](https://www.maxritter.net)
 
-[🌐 claude-code.pro](https://www.claude-code.pro) • [📧 contact@claude-code.pro](mailto:contact@claude-code.pro)
+[🌐 claude-code.pro](https://www.claude-code.pro)
 
 </div>
