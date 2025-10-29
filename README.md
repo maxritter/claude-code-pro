@@ -2,7 +2,7 @@
 
 <img src="images/logo.png" alt="Claude Code Pro" width="400">
 
-### Professional Framework for Production-Grade Software Development 💎⚙️💻
+### Professional Framework for Production-Grade Software Development ⚙️💻
 
 **Transforms Claude Code from a junior assistant into a senior software engineer.**
 
@@ -59,7 +59,7 @@
 - **[Docker Desktop](https://www.docker.com/products/docker-desktop/)** or **[OrbStack](https://orbstack.dev/download)**
 - **[VS Code](https://code.visualstudio.com/)** or **[Cursor](https://cursor.com/)** or **[Windsurf](https://windsurf.dev/)**
 - **[Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)**
-- **Optional** : Install [Warp Terminal](https://www.warp.dev/) for an optimized terminal experience
+- **Optional** : **[Warp](https://www.warp.dev/)** for the best terminal experience
 
 ### Installation
 
