@@ -6,7 +6,7 @@
 
 **Transforms Claude Code from a junior assistant into a senior software engineer.**
 
-**Stop "vibing" code, start shipping systematically with Spec-Driven Development, TDD, and much more!**
+**Stop vibe coding, start shipping systematically with Spec-Driven Development, TDD, and much more!**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Optimized-blue)](https://claude.ai)
@@ -75,15 +75,15 @@
 - Run `/config` to set auto-connect to IDE to true, then run `/ide` to connect to VS Code diagnostics
 - You can click "OPEN CC" in the lower bar to start a split terminal and monitor usage with `/usage`
 - Open Claude Code in the IDE Terminal, Extension or an external Terminal like Warp with the `cc` command
-- Start coding with Claude Code Pro and watch the upcoming Masterclass to learn more advanced techniques!
+- Start coding with Claude Code Pro and watch the upcoming Masterclass to learn more! ⤵️
 
 ---
 
-## 🎬 Coming Soon! Video Masterclass
+## 🎬 Masterclass Coming Soon!
 
 **If you want to dive deeper into the setup and advanced usage of this framework, check out the upcoming video masterclass with 12 comprehensive modules and 50+ detailed lessons:**
 
-#### [→ www.claude-code.pro](https://www.claude-code.pro)
+### [www.claude-code.pro](https://www.claude-code.pro)
 
 **What you'll learn:**
 - 🐳 Details about the automated dev container setup
