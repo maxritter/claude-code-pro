@@ -22,17 +22,17 @@
 
 **Claude Code Pro is token-optimized and built using latest techniques such as the new skills feature:**
 
-### 🐳 Automated Dev Container Setup (VS Code / Cursor / Windsurf)
-- **9 DevContainer Features** - Zsh, Node.js, Docker-in-Docker, uv, ruff, mypy, git, fzf, desktop
-- **27 VS Code Extensions** - Python, Docker, SQL, testing, formatting, and development tools
-- **7 CLI Tools** - qlty, Claude Code, Statusline, dotenvx, Cipher, Newman, Playwright
-- **PostgreSQL Database** - Local instance on port 5433 for development and testing
-
 ### 🎨 19 Skills (Auto-Enforce Best Practices for Spec-Driven & TDD)
 - **6 Testing Skills** - TDD, test writing, anti-patterns, debugging, verification, code review
 - **5 Global Skills** - Coding style, commenting, conventions, error handling, validation
 - **4 Backend Skills** - API design, models, queries, migrations
 - **4 Frontend Skills** - Components, CSS, accessibility, responsive design
+
+### 🐳 Automated Dev Container Setup (VS Code / Cursor / Windsurf)
+- **9 DevContainer Features** - Zsh, Node.js, Docker-in-Docker, uv, ruff, mypy, git, fzf, desktop
+- **27 VS Code Extensions** - Python, Docker, SQL, testing, formatting, and development tools
+- **7 CLI Tools** - qlty, Claude Code, Statusline, dotenvx, Cipher, Newman, Playwright
+- **PostgreSQL Database** - Local instance on port 5433 for development and testing
 
 ### 🔌 8 MCP Servers (Context & Capabilities)
 - **Cipher** - Cross-session memory
