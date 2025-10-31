@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64 mcr.microsoft.com/devcontainers/base:debian-12
+FROM mcr.microsoft.com/devcontainers/base:debian-12
 
 SHELL ["/bin/bash", "-l", "-c"]
 
