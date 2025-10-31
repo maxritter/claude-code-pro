@@ -219,7 +219,26 @@ Expected: All tests pass.
 
 Output to user: "Plan complete and saved to `docs/plans/<filename>.md`."
 
-Ask: "Ready to implement the specification tasks?"
+### Context Management Before Implementation
+
+**Assess plan size and recommend compaction:**
+
+Count the total tasks in the plan and evaluate:
+
+- **Small features (<5 tasks)**: No compaction needed
+  > "This plan has [N] tasks. We can proceed directly to implementation."
+
+- **Medium/Large features (≥5 tasks)**: Recommend compaction
+  > "This plan has [N] tasks spanning multiple components. Before starting implementation, I recommend running `/compact` to preserve the design and plan as compressed context. This ensures maximum available context during implementation and reduces risk of hitting context limits mid-execution.
+  >
+  > Benefits of compacting now:
+  > - Plan details preserved efficiently
+  > - Implementation starts with clean context window
+  > - Reduced risk of interruptions during execution
+  >
+  > After compaction, restart with `/spec-implement docs/plans/YYYY-MM-DD-<feature-name>.md`"
+
+Ask: "Ready to implement the specification tasks?" (or "Ready to compact and then implement?" for larger features)
 
 When your human partner confirms (any affirmative response):
 - Announce: "I'm transitioning to /spec-implement to execute this plan task-by-task."

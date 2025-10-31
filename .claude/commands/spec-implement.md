@@ -19,6 +19,24 @@ Load plan, review critically, execute tasks in batches, report for review betwee
 **Input location:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
 **Output:** Working, tested code
 
+## Session Context Awareness
+
+This command can be invoked in different session states:
+- **Fresh session**: Starting from scratch, need to load plan completely
+- **Compacted session**: Continuing after manual compaction, plan context preserved in compressed form
+- **Ongoing session**: Continuing from previous batch in same session
+
+**ALWAYS read the plan document first regardless of session state** to ensure all implementation details are available.
+
+After compaction, the conversation history is compressed but:
+- ✅ Plan document is still on disk (re-readable)
+- ✅ Code changes are in the repository
+- ✅ Tests are runnable
+- ✅ Cipher has stored learnings
+- ❌ Conversation details are compressed
+
+**Starting after compaction:** Treat like a fresh session - read plan, check what's completed, continue from next task.
+
 ## MCP Tools for This Stage
 
 **Use these MCP servers during implementation:**
@@ -145,12 +163,18 @@ NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST
 
 If no argument provided, ask: "Which implementation plan should I execute? (Check docs/plans/)"
 
+**Critical:** Even if this is a compacted or ongoing session, ALWAYS read the plan file completely to ensure you have all implementation details fresh in context.
+
 **Then:**
 1. Read the plan file completely
-2. Review critically - identify any questions or concerns about the plan
-3. If concerns: Raise them with your human partner before starting
-4. If no concerns: Create TodoWrite with all tasks and proceed
-5. **Run getDiagnostics()** - Ensure clean starting state
+2. **Count total tasks** and identify natural compaction checkpoints:
+   - Small (<5 tasks): No checkpoints needed
+   - Medium (5-10 tasks): Checkpoint at ~50%
+   - Large (>10 tasks): Checkpoints every 3-4 tasks OR at 50%, 70-80%
+3. Review critically - identify any questions or concerns about the plan
+4. If concerns: Raise them with your human partner before starting
+5. If no concerns: Create TodoWrite with all tasks and proceed
+6. **Run getDiagnostics()** - Ensure clean starting state
 
 ### Step 2: Execute Batch
 **Default: First 3 tasks**
@@ -216,11 +240,69 @@ When batch complete:
 - Show verification output
 - Say: "Ready for feedback."
 
+### Step 3.5: Context Management During Implementation
+
+**Monitor context usage proactively after each batch.**
+
+Assess whether compaction would be beneficial based on:
+
+**Size-based guidelines:**
+- **Small features (<5 tasks)**: Compaction rarely needed
+- **Medium features (5-10 tasks)**: Compact at midpoint (~50%)
+- **Large features (>10 tasks)**: Compact after every 3-4 tasks OR at critical milestones
+
+**When to suggest compaction:**
+
+1. **After first batch (3 tasks) with >6 tasks remaining:**
+   > "We've completed the first batch of 3 tasks with [X] tasks remaining. Since this is a larger feature, this is a good point to run `/compact` to preserve progress and free up context for the remaining work.
+   >
+   > After compaction, restart with `/spec-implement docs/plans/YYYY-MM-DD-<feature-name>.md` and I'll pick up from the next task."
+
+2. **At midpoint (~50% completion):**
+   > "We're at the halfway point ([X] of [Y] tasks complete). Consider running `/compact` now to preserve what we've built and ensure maximum context for the remaining tasks.
+   >
+   > After compaction, restart with `/spec-implement docs/plans/YYYY-MM-DD-<feature-name>.md`"
+
+3. **At 70-80% completion (before final push):**
+   > "We're at [70-80]% completion ([X] of [Y] tasks). Running `/compact` now will preserve our progress and give us fresh context for the final tasks and comprehensive verification.
+   >
+   > After compaction, restart with `/spec-implement docs/plans/YYYY-MM-DD-<feature-name>.md`"
+
+**What gets preserved after compaction:**
+- ✅ Plan document content (you re-read from file)
+- ✅ Implementation patterns and decisions (stored in Cipher)
+- ✅ Code written (in the repository)
+- ✅ Test results (re-runnable)
+- ✅ Diagnostics (re-checkable)
+- ❌ Conversation details (compressed, not critical for implementation)
+
+**After user runs `/compact` and restarts:**
+1. You MUST re-read the plan file (Step 1)
+2. Check TodoWrite or ask user which tasks are complete
+3. Continue from next pending task (Step 2)
+
 ### Step 4: Continue
+
 Based on feedback:
 - Apply changes if needed
+- **Assess context usage** - Check if at a compaction checkpoint
 - Execute next batch
 - Repeat until complete
+
+**Between batches, assess compaction need:**
+
+Ask yourself:
+1. Are we at a natural checkpoint? (first batch complete with >6 remaining, midpoint, 70-80%)
+2. Is this a medium/large feature? (≥5 tasks)
+3. Would compaction help preserve progress and free context?
+
+If YES to questions 1 AND 2, proactively suggest:
+> "This is a good checkpoint to run `/compact` to preserve progress and ensure we have sufficient context for the remaining work. After compaction, restart with `/spec-implement docs/plans/YYYY-MM-DD-<feature-name>.md`"
+
+**Don't suggest compaction:**
+- For small features (<5 tasks) unless approaching context limits
+- In the middle of a logical unit of work (wait for batch completion)
+- If just compacted in previous batch
 
 ### Step 5: Complete Development
 

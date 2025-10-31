@@ -125,6 +125,8 @@ When your human partner confirms (any affirmative response):
 - **REQUIRED SUB-COMMAND:** Use `/spec-plan docs/designs/YYYY-MM-DD-<topic>-design.md`
 - The spec-plan command will read the design document and create a task-by-task implementation plan
 
+**Context Management Note:** Design phase typically uses minimal context and produces a compact design document. Compaction guidance is more relevant during planning and implementation phases.
+
 ## Question Patterns
 
 ### When to Use AskUserQuestion Tool
